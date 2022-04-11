@@ -10,9 +10,9 @@ namespace TimeSheets.GB.Controllers
     [ApiController]
     public class ContractsController : ControllerBase
     {
-        private readonly IService<ContractEntity> _service;
+        private readonly IService<ContractDto> _service;
 
-        public ContractsController(IService<ContractEntity> service)
+        public ContractsController(IService<ContractDto> service)
         {
             _service = service;
         }
@@ -30,13 +30,13 @@ namespace TimeSheets.GB.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterContract([FromBody]ContractEntity contract)
+        public async Task<IActionResult> RegisterContract([FromBody]ContractDto contract)
         {
             return (IActionResult)Ok(await _service.Create(contract));
         }
 
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateContract([FromRoute]int contractId, [FromBody]ContractEntity contract)
+        public async Task<IActionResult> UpdateContract([FromRoute]int contractId, [FromBody]ContractDto contract)
         {
             return Ok(await _service.Update(contractId, contract));
         }

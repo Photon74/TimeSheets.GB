@@ -11,9 +11,9 @@ namespace TimeSheets.GB.Controllers
     [ApiController]
     public class InvoicesController : ControllerBase
     {
-        private readonly IService<InvoiceEntity> _service;
+        private readonly IService<InvoiceDto> _service;
 
-        public InvoicesController(IService<InvoiceEntity> service)
+        public InvoicesController(IService<InvoiceDto> service)
         {
             _service = service;
         }
@@ -31,13 +31,13 @@ namespace TimeSheets.GB.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterInvoice([FromBody] InvoiceEntity invoice)
+        public async Task<IActionResult> RegisterInvoice([FromBody] InvoiceDto invoice)
         {
             return Ok(await _service.Create(invoice));
         }
 
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateInvoice([FromRoute] int invoiceId, [FromBody] InvoiceEntity invoice)
+        public async Task<IActionResult> UpdateInvoice([FromRoute] int invoiceId, [FromBody] InvoiceDto invoice)
         {
             return Ok(await _service.Update(invoiceId, invoice));
         }

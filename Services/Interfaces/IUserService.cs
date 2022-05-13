@@ -10,5 +10,7 @@ namespace TimeSheets.GB.Services.Interfaces
         TokenResponse Authenticate(string username, string password);
 
         string RefreshToken(string token);
+
+        bool IsUserNameUnique(string username);
     }
 }

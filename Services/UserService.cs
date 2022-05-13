@@ -122,6 +122,11 @@ namespace TimeSheets.GB.Services
             return string.Empty;
         }
 
+        public bool IsUserNameUnique(string username)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<UserDto> Update(int id, UserDto item)
         {
             throw new NotImplementedException();
